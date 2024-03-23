@@ -15,9 +15,9 @@ public class Subsequence {
 
     static List<String> findSequence(String left, String right, String result) {
         return left.chars().mapToObj(Character::toString).flatMap(c -> {
-            var foundIndex = right.indexOf(c);
-            if (foundIndex != -1) {
-                return findSequence(left.substring(1), right.substring(foundIndex + 1), result + c).stream();
+            var splitRight = right.split(c, 2);
+            if (splitRight.length > 1) {
+                return findSequence(left.substring(1), splitRight[1], result + c).stream();
             } else {
                 var retVal = new ArrayList<String>();
                 retVal.add(result);
