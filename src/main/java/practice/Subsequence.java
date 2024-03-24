@@ -17,7 +17,7 @@ public class Subsequence {
         return left.chars().mapToObj(Character::toString).flatMap(c -> {
             var splitRight = right.split(c, 2);
             if (splitRight.length > 1) {
-                return findSequence(left.substring(1), splitRight[1], result + c).stream();
+                return findSequence(left.split(c, 2)[1], splitRight[1], result + c).stream();
             } else {
                 var retVal = new ArrayList<String>();
                 retVal.add(result);
